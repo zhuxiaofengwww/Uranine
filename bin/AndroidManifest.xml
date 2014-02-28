@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.version1.uranine"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="18" />
+    
+    <permission
+        android:name="com.version1.uranine.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.version1.uranine.permission.C2D_MESSAGE" />
+    <!-- App receives GCM messages. -->
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <!-- GCM requires a Google account. -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <!-- Keeps the processor from sleeping when a message is received. -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />    
+    <!-- 访问网络的权限 -->  
+    <uses-permission android:name="android.permission.INTERNET"/>  
+    <!-- 在SDCard中创建与删除文件权限 -->  
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>  
+    <!-- 往SDCard写入数据权限 -->  
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <!-- 获得android_ID,IMEI的权限 -->  
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    
+    <uses-permission android:name="android.permission.READ_LOGS" />  
+	<uses-permission android:name="android.permission.RESTART_PACKAGES" />
+	<uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />    
+
+    <!-- 
+    <uses-permission android:name="android.permission.INTERNET"/>    
+    <uses-permission android:name="android.permission.INSTALL_PACKAGES"/> 
+    
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>-->
+
+    <application
+        android:allowBackup="true"
+        android:screenOrientation="portrait" 
+  
+        android:icon="@drawable/icon"    
+        android:label="@string/app_name">
+        <activity
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:screenOrientation="portrait"
+            android:name=".SplashActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity 
+            android:name=".MainTabActivity"          
+            android:screenOrientation="portrait">
+        </activity>        
+        <activity 
+            android:name=".MainPage"         
+            android:screenOrientation="portrait">
+        </activity>
+        <activity 
+            android:name=".AppManagerActivity"          
+            android:screenOrientation="portrait">
+        </activity>  
+        <activity 
+            android:theme="@style/test"            
+            android:name=".MoreLogsActivity"         
+            android:screenOrientation="portrait">
+        </activity>         
+        
+        <activity 
+            android:name=".SettingCenterActivity"          
+            android:screenOrientation="portrait">
+        </activity>             
+        <activity 
+            android:name=".UninstallApp"         
+            android:screenOrientation="portrait">
+        </activity>        
+        <activity 
+            android:name=".LogDetailActivity"         
+            android:screenOrientation="portrait">
+        </activity> 
+        
+	    <receiver android:name="MyReceiver"> 
+		  <intent-filter> 		 
+		    <action 
+		      android:name="uranine.tracking.LEAK" /> 			           		      
+		  </intent-filter> 
+	    </receiver>          
+	    
+	    <receiver
+            android:name="com.google.android.gcm.GCMBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
+                <category android:name="com.version1.uranine" />
+            </intent-filter>
+        </receiver>
+        <service android:name=".GCMIntentService" />      
+	    
+      	<receiver android:name="AppDetectReceive" android:enabled="true" >
+        	<intent-filter>
+          		<action android:name="android.intent.action.PACKAGE_ADDED"></action>
+          		<!-- <action android:name="android.intent.action.PACKAGE_CHANGED"></action>-->
+          		<action android:name="android.intent.action.PACKAGE_REMOVED"></action>
+          		<action android:name="android.intent.action.PACKAGE_REPLACED"></action>
+          		<!-- <action android:name="android.intent.action.PACKAGE_RESTARTED"></action>-->
+        		<!--    <action android:name="android.intent.action.PACKAGE_INSTALL"></action>-->
+            	<data android:scheme="package"></data>
+        	</intent-filter>
+		</receiver>
+        
+    </application>
+</manifest>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="60dip"
+    android:background="@drawable/main_item_selector" >
+
+    <ImageView
+        android:id="@+id/iv_app_item_icon"
+        android:layout_width="60dip"
+        android:layout_height="60dip"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="3dip"
+        android:src="@drawable/ic_launcher" />
+
+
+
+    <TextView
+        android:id="@+id/tv_app_item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/iv_app_item_icon"
+        android:text="Program Name"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="16.0dip"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/tv_app_item_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_app_item_name"
+        android:layout_alignParentBottom="true"
+        android:text="Installed position"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textSize="14.0dip"
+        android:textColor="@color/gray" />
+    <CheckBox
+        android:id="@+id/cb_setting_view_status"
+        android:focusable="false"
+        android:clickable="false"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        style="@style/MyCheckBox"
+        />
+
+    <ProgressBar
+        android:id="@+id/app_transfer_progressBar"
+        style="?android:attr/android:progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:max="100"
+        android:layout_alignLeft="@+id/tv_app_item_name"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/cb_setting_view_status" />
+
+    <TextView
+        android:id="@+id/app_transfer_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/cb_setting_view_status"
+        android:text="Stop 0%"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/gray"
+        android:textSize="14.0dip" />
+
+</RelativeLayout>
